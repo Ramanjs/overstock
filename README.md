@@ -1,5 +1,40 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+## Project Scope
+
+Online Shoe retail store. OverStock is a listing page for Shoes. Sellers are to register on the platform and list their products. Users can in turn choose to buy any product from the catalog.
+
+## Database Model
+
+* Customer
+    * name (first name + last name)
+    * email
+    * password
+    * address
+    * contact
+    * purchased items
+    * cart
+    * reviews
+
+* Seller
+    * name
+    * email
+    * password
+    * address
+    * contact
+    * inventory
+    * rating
+
+* Shoe
+    * name
+    * price
+    * category
+    * image
+    * images
+    * reviews
+    * sizes
+
 ## Getting Started
 
 First, run the development server:
