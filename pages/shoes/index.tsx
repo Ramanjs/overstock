@@ -5,22 +5,31 @@ import Link from "next/link"
 const Shoes = () => {
   const [shoes, setShoes] = useState([])
 
+  const shuffleArray = (array: any) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
+
   useEffect(() => {
     fetch('/api/shoe')
     .then(res => res.json())
     .then(res => {
-      let mensI = 0, womensI = 0, kidsI = 0;
+      //let mensI = 0, womensI = 0, kidsI = 0;
       const shoesImages = res.results.map((shoe: any) => {
         if (shoe.category_id === 1) {
-          shoe.imageUrl = mensImages[mensI++ % 3]
+          shoe.imageUrl = mensImages[shoe.shoe_id % 3]
         } else if (shoe.category_id === 2) {
-          shoe.imageUrl = womensImages[womensI++ % 3]
+          shoe.imageUrl = womensImages[shoe.shoe_id % 3]
         } else {
-          shoe.imageUrl = kidsImages[kidsI++ % 3]
+          shoe.imageUrl = kidsImages[shoe.shoe_id % 3]
         }
         return shoe
       });
-      console.log(shoesImages)
+      shuffleArray(shoesImages)
       setShoes(shoesImages)
     })
   }, [])
