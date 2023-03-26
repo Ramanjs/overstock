@@ -14,3 +14,17 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
     res.status(500).json({ error: e.message })
   }
 }
+
+export async function posthandler(req: NextApiRequest, res: NextApiResponse) {
+  const dbconn = await dbconnection();
+  try {
+    const { shoeId } = req.query;
+    const query = "INSERT INTO orders values (1, ?, ?, ?, )"
+    const values: any[] = [];
+    const [results] = await dbconn.execute(query, values)
+    dbconn.end()
+    res.status(200).json({ results })
+  } catch (e: any) {
+    res.status(500).json({ error: e.message })
+  }
+}

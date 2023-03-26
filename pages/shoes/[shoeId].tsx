@@ -21,6 +21,7 @@ const ShoeId = () => {
 
   const { shoeId } = router.query
   const [shoe, setShoe] = useState<Shoe>()
+  const [bought, setBought] = useState(false)
 
   useEffect(() => {
     fetch(`/api/shoe/${shoeId}`)
@@ -63,7 +64,9 @@ const ShoeId = () => {
             <p>Weight: {shoe.weight} grams</p>
           </div>
           <p>MRP: &#8377; {shoe.price}</p>
-          <div className="w-full text-center py-2 text-white bg-black rounded-3xl cursor-pointer">Add to Bag</div>
+          {bought && <p className="text-green-600">Successfully purchased item! Auto discount of 10% added</p>}
+          {bought && <p className="text-green-600">Final price: &#8377; {shoe.price * 0.9}</p>}
+          <div className="w-full text-center py-2 text-white bg-black rounded-3xl cursor-pointer" onClick={() => setBought(true)}>Add to Bag</div>
         </div>
       </div>
     </section>
