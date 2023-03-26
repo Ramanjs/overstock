@@ -60,7 +60,7 @@ const ShoeId = () => {
           <div>
             <p>Color: {shoe.color}</p>
             <p>Size: {shoe.size}</p>
-            <p>Weight: {shoe.weight}</p>
+            <p>Weight: {shoe.weight} grams</p>
           </div>
           <p>MRP: &#8377; {shoe.price}</p>
           <div className="w-full text-center py-2 text-white bg-black rounded-3xl cursor-pointer">Add to Bag</div>
