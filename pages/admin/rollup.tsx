@@ -15,9 +15,9 @@ const Rollup = () => {
   }, [])
 
   const columns = [
-    { label: 'Seller ID', renderCell: (item: any) => item.seller_id },
-    { label: 'Shoe ID', renderCell: (item: any) => item.shoe_id },
-    { label: 'Category', renderCell: (item: any) => item.name},
+    { label: 'Seller ID', renderCell: (item: any) => item.seller_id ? item.seller_id : '-' },
+    { label: 'Shoe ID', renderCell: (item: any) => item.shoe_id ? item.shoe_id : '-' },
+    { label: 'Category', renderCell: (item: any) => item.name ? item.name : '-' },
     { label: 'Commission', renderCell: (item: any) => item.commission }
   ]
 
