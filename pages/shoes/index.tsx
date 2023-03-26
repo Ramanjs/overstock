@@ -1,8 +1,11 @@
 import {useEffect, useState} from "react"
+import { useRouter } from "next/router"
 import { mensImages, womensImages, kidsImages } from "@/images/imageUrls"
 import Link from "next/link"
 
 const Shoes = () => {
+  const router = useRouter()
+  const { category } = router.query
   const [shoes, setShoes] = useState([])
 
   const shuffleArray = (array: any) => {
@@ -18,8 +21,7 @@ const Shoes = () => {
     fetch('/api/shoe')
     .then(res => res.json())
     .then(res => {
-      //let mensI = 0, womensI = 0, kidsI = 0;
-      const shoesImages = res.results.map((shoe: any) => {
+      let shoesImages = res.results.map((shoe: any) => {
         if (shoe.category_id === 1) {
           shoe.imageUrl = mensImages[shoe.shoe_id % 3]
         } else if (shoe.category_id === 2) {
@@ -29,10 +31,14 @@ const Shoes = () => {
         }
         return shoe
       });
+
+      if (category) {
+        shoesImages = shoesImages.filter((shoe:any) => shoe.category_id == category)
+      }
       shuffleArray(shoesImages)
       setShoes(shoesImages)
     })
-  }, [])
+  }, [category])
 
   return (
     <section className="w-full p-8">

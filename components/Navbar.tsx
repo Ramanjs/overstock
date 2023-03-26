@@ -9,9 +9,27 @@ const Navbar = () => {
         </svg>
       </Link>
       <div className="flex space-x-4 items-center">
-        <Link href="/shoes/men">Men</Link>
-        <Link href="/shoes/women">Women</Link>
-        <Link href="/shoes/kids">Kids</Link>
+        <Link href={{
+           pathname: "/shoes",
+           query: { category: "1" }
+          }}
+        >
+          Men
+        </Link>
+        <Link href={{
+           pathname: "/shoes",
+           query: { category: "2" }
+          }}
+        >
+          Women
+        </Link>
+         <Link href={{
+           pathname: "/shoes",
+           query: { category: "3" }
+          }}
+        >
+          Kids
+        </Link>
       </div>
       <div></div>
     </div>
