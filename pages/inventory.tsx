@@ -39,6 +39,10 @@ const Inventory = () => {
     })
   }, [category])
 
+  const handleSave = () => {
+
+  }
+
   return (
     <section className="w-full p-8">
       <div className="w-full flex justify-between flex-wrap space-4">
@@ -54,6 +58,7 @@ const Inventory = () => {
                 <p>Quantity: </p>
                 <span contentEditable={true}>{shoe.quantity}</span>
               </div>
+              {/*<button>Save</button> */}
             </div>
           </div>
         ))}
