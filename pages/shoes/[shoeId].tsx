@@ -28,7 +28,6 @@ const ShoeId = () => {
     .then(res => res.json())
     .then(res => {
       const tempShoe = res.results[0]
-      console.log(tempShoe)
       if (tempShoe.category_id === 1) {
         tempShoe.category = "Men's Shoe"
         tempShoe.imageUrl = mensImages[tempShoe.shoe_id % 3]
@@ -42,6 +41,17 @@ const ShoeId = () => {
       setShoe(tempShoe)
     })
   }, [])
+
+  const handleBuy = () => {
+    setBought(true)
+    fetch('/api/checkout', {
+      method: 'POST',
+      body: JSON.stringify({
+        price: shoe?.price,
+        shoe_id: shoe?.shoe_id
+      })
+    })
+  }
 
   if (shoe === undefined) {
     return <div></div>
@@ -66,7 +76,7 @@ const ShoeId = () => {
           <p>MRP: &#8377; {shoe.price}</p>
           {bought && <p className="text-green-600">Successfully purchased item! Auto discount of 10% added</p>}
           {bought && <p className="text-green-600">Final price: &#8377; {shoe.price * 0.9}</p>}
-          <div className="w-full text-center py-2 text-white bg-black rounded-3xl cursor-pointer" onClick={() => setBought(true)}>Add to Bag</div>
+          <div className="w-full text-center py-2 text-white bg-black rounded-3xl cursor-pointer" onClick={handleBuy}>Add to Bag</div>
         </div>
       </div>
     </section>
