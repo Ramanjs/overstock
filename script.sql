@@ -128,6 +128,9 @@ left join sellers on (ratings.seller_id = sellers.seller_id)
 group by sellers.seller_id
 order by AVG(ratings.stars) desc;
 
+-- Creating an index on username
+CREATE INDEX username_idx ON customer (username);
+
 -- Seller wants to see their sold history
 select order_id, shoe_seller.shoe_id
 from order_shoe

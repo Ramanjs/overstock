@@ -33,7 +33,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
       values = [body.quantity, body.shoe_id];
       [results] = await dbconn.execute(query, values)
 
-      query = "commit";
+      query = "ROLLBACK";
       values = [];
       [results] = await dbconn.execute(query, values)
 

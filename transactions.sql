@@ -10,4 +10,4 @@ COMMIT;
 START TRANSACTION;
   SELECT * FROM shoe where shoe_id = 'S001';
   UPDATE shoe SET quantity = 2 WHERE shoe_id = 'S001';
-COMMIT;
+ROLLBACK;
