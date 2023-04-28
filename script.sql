@@ -129,7 +129,10 @@ group by sellers.seller_id
 order by AVG(ratings.stars) desc;
 
 -- Creating an index on username
-CREATE INDEX username_idx ON customer (username);
+CREATE INDEX username_idx ON customers (login_id);
+
+-- Create an index on price
+CREATE INDEX shoe_price ON shoe (price);
 
 -- Seller wants to see their sold history
 select order_id, shoe_seller.shoe_id
